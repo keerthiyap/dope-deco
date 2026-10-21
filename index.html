@@ -300,6 +300,28 @@ body.menu-open .menu{clip-path:circle(150% at calc(100% - 60px) 40px);visibility
 .cmp-range{position:absolute;left:0;bottom:0;width:100%;height:2px;margin:0;opacity:0;pointer-events:none}
 .cmp:focus-within .bar i{outline:3px solid var(--ink);outline-offset:3px}
 @media (max-width:860px){.rl{grid-template-columns:1fr}.cmp{justify-self:stretch;max-width:none}}
+@media (min-width:861px){
+.stage{--side:300px}
+#groveGL{left:var(--side);width:calc(100% - var(--side))}
+.stage .hint{left:calc(var(--side) + 20px)}
+.stage .ui{left:0;right:auto;top:0;bottom:0;width:var(--side);flex-direction:column;flex-wrap:nowrap;justify-content:space-between;align-items:stretch;gap:12px;padding:18px;box-sizing:border-box;background:rgba(255,255,255,.5);overflow-y:auto}
+.stage .ui .glass{background:transparent;backdrop-filter:none;padding:0;border-radius:0}
+.glass.ctrls{width:auto;max-width:none}
+.glass.ctrls .seg{display:grid;grid-template-columns:1fr 1fr;border-radius:18px;gap:2px}
+.glass.ctrls .seg button{padding:10px 10px;font-size:13px;white-space:nowrap}
+.glass.ctrls .seg.st{grid-template-columns:1fr}
+.glass.ctrls #seg{display:flex;flex-wrap:wrap}.glass.ctrls #seg button{flex:1 1 auto}
+.glass.ctrls .seg.st button{padding:8px 12px 8px 8px}
+.stage .info{max-width:none;padding-top:14px;border-top:1px solid rgba(26,26,26,.1)}
+.stage .info b{font-size:21px}
+}
+@media (max-width:860px){
+.glass.ctrls{width:auto;max-width:none}
+.glass.ctrls .seg.st{grid-template-columns:1fr 1fr}
+.glass.ctrls .seg.st button{white-space:normal;line-height:1.2;min-width:0}
+.glass.ctrls .seg.bd{display:grid;grid-template-columns:repeat(3,1fr);border-radius:18px;gap:2px}
+.glass.ctrls #seg{flex-wrap:wrap;border-radius:18px}.glass.ctrls #seg button{flex:1 1 auto}
+}
 @media (max-width:860px){.grove .head{grid-template-columns:1fr}.grove .head p{justify-self:start}.stage{height:auto;aspect-ratio:3/4.4;min-height:0}.stage .ui{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:12px;gap:8px}.glass{padding:12px 14px}.stage .info{display:none}}
 @media (max-width:860px){.stage{aspect-ratio:auto;height:auto}#groveGL{position:relative;display:block;height:auto;aspect-ratio:5/4}.stage .ui{position:static;padding:0 12px 12px}}
 
@@ -967,14 +989,13 @@ footer .legal img{width:34px;height:auto}
               <button class="pill light" type="button" id="wzBack" style="visibility:hidden">&larr; Back</button>
               <button class="pill magnetic" type="button" id="wzNext" data-cursor="Next"><span class="dot"></span>Next</button>
               <button class="pill magnetic" type="submit" id="wzSend" data-cursor="Send" hidden><span class="dot"></span>Send my brief</button>
-              <p class="note">Design prototype: the form doesn't send yet.</p>
+              <p class="note">Your brief comes straight to our inbox.</p>
             </div>
           </div>
           <div class="success" id="success" hidden tabindex="-1">
             <img src="img/mono-pink.png" alt="">
             <h3>Thank you, <span id="sName"></span>.</h3>
             <p id="sText"></p>
-            <p class="note">Prototype only: nothing was sent.</p>
             <button class="pill light" type="button" id="again" style="justify-self:start">Start again</button>
           </div>
         </form>
@@ -1283,13 +1304,23 @@ form.addEventListener('submit', e => {
   if (wzCur < wzSteps.length - 1) { wzShow(wzCur + 1, 1); return; }
   const bn = !nm.value.trim(), be = !/^\S+@\S+\.\S+$/.test(em.value.trim()); setErr(nm, bn); setErr(em, be);
   if (bn || be) { (bn ? nm : em).focus(); return; }
-  const fd = new FormData(form);
+  const fd = new FormData(form), send = document.getElementById('wzSend'), note = send.parentNode.querySelector('.note');
+  const out = new FormData(); out.append('_subject', `New mini design brief from ${nm.value.trim()}`); out.append('_template', 'table'); out.append('_replyto', em.value.trim());
+  for (const [k, v] of fd) if (k !== 'files') out.append(k, v);
+  [...fl.files].forEach(f => out.append('attachment', f));
+  send.disabled = true; note.textContent = 'Sending your brief…';
+  fetch('https://formsubmit.co/ajax/keerthiyap@gmail.com', {method: 'POST', body: out, headers: {Accept: 'application/json'}})
+    .then(r => r.json()).then(j => { if (String(j.success) !== 'true') throw 0; done(fd); })
+    .catch(() => { note.textContent = "Sorry, that didn't send. Please try again, or email hello@dopedeco.com."; })
+    .finally(() => { send.disabled = false; });
+});
+function done(fd){
   document.getElementById('sName').textContent = nm.value.trim().split(' ')[0];
   document.getElementById('sText').textContent = `We've got your brief and will be in touch at ${em.value.trim()}. You asked about: ${[fd.get('space'), fd.get('kind').toLowerCase(), fd.get('when') === 'Not sure yet' ? 'dates to be decided' : fd.get('when')].join(', ')}${fl.files.length ? `, with ${fl.files.length} file${fl.files.length > 1 ? 's' : ''} attached` : ''}.`;
   fBody.hidden = true; fBody.style.display = 'none'; ok.hidden = false; ok.focus({preventScroll: true}); ST && ST.refresh();
   const cc = form.closest('.c-card'); if (cc && cc.getBoundingClientRect().top < 90) scrollTo({top: cc.getBoundingClientRect().top + scrollY - 110, behavior: 'smooth'});
   if (G && !reduce) G.fromTo(ok.children, {y: 30, opacity: 0}, {y: 0, opacity: 1, stagger: .08, duration: .8, ease: 'expo.out'});
-});
+}
 document.getElementById('again').addEventListener('click', () => { form.reset(); fl.dispatchEvent(new Event('change')); ok.hidden = true; fBody.hidden = false; fBody.style.display = 'contents'; wzShow(0); });
 
 /* ================= THREE helpers ================= */
@@ -2286,7 +2317,7 @@ if (T) try { (function(){
     const tv = Math.tan(cam.fov * Math.PI / 360), th2 = tv * cam.aspect, u = Math.max(.5, (camW - 2 * camDx) / camW);
     return {z: Math.max(narrow ? 14 : 14.5, AZ + (tw / 2 + .5) / (th2 * u * .86), AZ + (th + .6) / (2 * tv * (narrow ? .78 : .9))), y: Math.max(narrow ? 1.7 : 1.75, th * (narrow ? .5 : .42))};
   };
-  const layout = () => { const w = gCanvas.clientWidth, h = gCanvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w/h; camW = w; camH = h; narrow = w/h < 1.3; cam.fov = narrow ? 40 : 32; camDx = w > 860 ? Math.min(170, w * .12) : 0; Object.assign(camS, camFor(arch.w, arch.h)); camApply(); }; // the scene sits clear of the control panel (right on desktop, down on phones)
+  const layout = () => { const w = gCanvas.clientWidth, h = gCanvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); cam.aspect = w/h; camW = w; camH = h; narrow = w/h < 1.3; cam.fov = narrow ? 40 : 32; camDx = 0; Object.assign(camS, camFor(arch.w, arch.h)); camApply(); }; // the control panel sits beside the canvas on desktop and below it on phones, so the scene stays centred
   new ResizeObserver(layout).observe(gCanvas); layout();
   gCanvas.addEventListener('pointerdown', e => { drag = true; auto = false; lx = e.clientX; gCanvas.setPointerCapture(e.pointerId); });
   gCanvas.addEventListener('pointermove', e => { if (drag) { vy = (e.clientX - lx) * .008; lx = e.clientX; } });
