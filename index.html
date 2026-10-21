@@ -310,7 +310,7 @@ body.menu-open .menu{clip-path:circle(150% at calc(100% - 60px) 40px);visibility
 .glass.ctrls .seg{display:grid;grid-template-columns:1fr 1fr;border-radius:18px;gap:2px}
 .glass.ctrls .seg button{padding:10px 10px;font-size:13px;white-space:nowrap}
 .glass.ctrls .seg.st{grid-template-columns:1fr}
-.glass.ctrls #seg{display:flex;flex-wrap:wrap}.glass.ctrls #seg button{flex:1 1 auto}
+.glass.ctrls #seg{display:flex;flex-wrap:wrap}.glass.ctrls #seg button{flex:1 1 auto}.glass.ctrls #seg:has(button:nth-child(4)) button{flex-basis:40%}
 .glass.ctrls .seg.st button{padding:8px 12px 8px 8px}
 .stage .info{max-width:none;padding-top:14px;border-top:1px solid rgba(26,26,26,.1)}
 .stage .info b{font-size:21px}
@@ -793,9 +793,10 @@ footer .legal img{width:34px;height:auto}
           <div class="glass ctrls">
             <span class="label">Setup</span>
             <div class="seg st" id="setups" role="group" aria-label="Choose a signature setup">
-              <button type="button" data-set="grove" aria-pressed="true"><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%"><defs><linearGradient id="gtG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D27A"/><stop offset="1" stop-color="#C98A1C"/></linearGradient></defs><path d="M12 2.5 17 9h-2.4l3.9 5.2h-2.6L20 19.5H4l4.1-5.3H5.5L9.4 9H7z" fill="url(#gtG)"/><rect x="10.6" y="19.5" width="2.8" height="2.8" rx=".4" fill="#9A6A16"/><path d="M12 2.5 13.4 4.3" stroke="#FFF3C9" stroke-width="1" stroke-linecap="round"/></svg></i>Gilded Grove</button>
+              
+              <button type="button" data-set="trad" aria-pressed="true"><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%"><rect x="3.5" y="10" width="17" height="11.5" rx="1.2" fill="#C4122E"/><rect x="2.5" y="7" width="19" height="4" rx="1" fill="#D92A40"/><rect x="10.6" y="7" width="2.8" height="14.5" fill="#2E6B3F"/><path d="M12 7C10.5 4 6.8 3.2 6.6 5.2 6.4 7 9.6 7.2 12 7zM12 7c1.5-3 5.2-3.8 5.4-1.8.2 1.8-3 2-5.4 1.8z" fill="#2E6B3F"/><circle cx="12" cy="7" r="1.3" fill="#24563A"/></svg></i>Traditional Christmas</button>
               <button type="button" data-set="wood" aria-pressed="false"><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M12 1.5v3" stroke="#4F7A45" stroke-width="1.6" stroke-linecap="round"/><path d="M12 4c-4.2 0-6.5 4.6-6.5 9.2 0 4.6 2.9 8.8 6.5 9.3 3.6-.5 6.5-4.7 6.5-9.3S16.2 4 12 4z" fill="#8A5A34"/><g fill="none" stroke="#5A3820" stroke-width="1.1" stroke-linecap="round"><path d="M7.2 9.2q2.4 2 4.8 0 2.4 2 4.8 0"/><path d="M6.2 13q2.9 2.2 5.8 0 2.9 2.2 5.8 0"/><path d="M6.6 16.9q2.7 2 5.4 0 2.7 2 5.4 0"/><path d="M9 20.3q1.5 1.2 3 0 1.5 1.2 3 0"/></g><g fill="#D9B46A"><circle cx="9.6" cy="8.6" r=".7"/><circle cx="14.4" cy="8.6" r=".7"/><circle cx="9" cy="12.3" r=".7"/><circle cx="15" cy="12.3" r=".7"/><circle cx="12" cy="15.8" r=".7"/></g></svg></i>Woodland Forest</button>
-              <button type="button" data-set="trad" aria-pressed="false"><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%"><rect x="3.5" y="10" width="17" height="11.5" rx="1.2" fill="#C4122E"/><rect x="2.5" y="7" width="19" height="4" rx="1" fill="#D92A40"/><rect x="10.6" y="7" width="2.8" height="14.5" fill="#2E6B3F"/><path d="M12 7C10.5 4 6.8 3.2 6.6 5.2 6.4 7 9.6 7.2 12 7zM12 7c1.5-3 5.2-3.8 5.4-1.8.2 1.8-3 2-5.4 1.8z" fill="#2E6B3F"/><circle cx="12" cy="7" r="1.3" fill="#24563A"/></svg></i>Traditional Christmas</button>
+              <button type="button" data-set="grove" aria-pressed="false"><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%"><defs><linearGradient id="gtG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D27A"/><stop offset="1" stop-color="#C98A1C"/></linearGradient></defs><path d="M12 2.5 17 9h-2.4l3.9 5.2h-2.6L20 19.5H4l4.1-5.3H5.5L9.4 9H7z" fill="url(#gtG)"/><rect x="10.6" y="19.5" width="2.8" height="2.8" rx=".4" fill="#9A6A16"/><path d="M12 2.5 13.4 4.3" stroke="#FFF3C9" stroke-width="1" stroke-linecap="round"/></svg></i>Gilded Grove</button>
               <button type="button" data-set="white" aria-pressed="false"><i class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="100%" height="100%"><g stroke="#7FB3D9" stroke-width="1.7" stroke-linecap="round" fill="none"><path d="M12 2v20M3.3 7l17.4 10M3.3 17l17.4-10"/><path d="M9.5 3.8 12 6l2.5-2.2M9.5 20.2 12 18l2.5 2.2M3.9 10.1l3.2-.4-1.2-3M20.1 13.9l-3.2.4 1.2 3M3.9 13.9l3.2.4-1.2 3M20.1 10.1l-3.2-.4 1.2-3"/></g></svg></i>Wintry Christmas</button>
             </div>
             <span class="label">Backdrop</span>
@@ -822,9 +823,10 @@ footer .legal img{width:34px;height:auto}
           <span class="label">Real life</span>
           <h3 class="rl-h">From proposal to <em>shop floor.</em></h3>
           <div class="rl-sets" id="rlSets" role="group" aria-label="Choose a signature setup">
-            <button type="button" data-set="grove" aria-pressed="true">Gilded Grove</button>
-            <button type="button" data-set="trad" aria-pressed="false">Traditional Christmas</button>
+            
+            <button type="button" data-set="trad" aria-pressed="true">Traditional Christmas</button>
             <button type="button" data-set="wood" aria-pressed="false">Woodland Forest</button>
+            <button type="button" data-set="grove" aria-pressed="false">Gilded Grove</button>
             <button type="button" data-set="white" aria-pressed="false">Wintry Christmas</button>
           </div>
           <p id="rlText">We drew the Gilded Grove for Exclusive Lines, then built it between the fragrance counters. Drag the handle to compare.</p>
@@ -1264,6 +1266,7 @@ document.querySelectorAll('.mood').forEach(m => m.addEventListener('click', () =
   thumbs.addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return; pick(b);
   });
+  document.querySelector('#rlSets [data-set="trad"]').click(); // opens on Traditional Christmas, like the setups above
 })();
 
 /* ---------- FAQ ---------- */
@@ -2347,6 +2350,7 @@ segEl.addEventListener('click', e => { const b = e.target.closest('button'); if 
 // the Gilded Grove has no themed scene, so its Theme button hides (falling back to Stars)
 const syncTheme = () => { const tb = document.querySelector('#sw [data-way="theme"]'); tb.hidden = false; tb.disabled = setup === 'grove'; tb.title = tb.disabled ? 'Gilded Grove has no themed scene' : ''; if (tb.disabled && way === 'theme') { way = 'stars'; document.querySelectorAll('#sw button').forEach(x => x.setAttribute('aria-pressed', x.dataset.way === way)); } };
 syncTheme(); updInfo();
+document.querySelector('#setups [data-set="trad"]').click(); // the page opens on Traditional Christmas
 // until someone picks something themselves, the options cycle on their own while the stage is on screen
 let picked = reduce || /noauto/.test(location.search), stageOn = false;
 new IntersectionObserver(([e]) => stageOn = e.isIntersecting, {threshold: .35}).observe(stage);
