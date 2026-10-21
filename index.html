@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DOPE DECO 2.0</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,8 +67,8 @@ button{font:inherit;color:inherit}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:90;padding-top:calc(env(safe-area-inset-top,0px) + 18px);pointer-events:none}
-.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:7px;border-radius:999px;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border:1px solid rgba(255,255,255,.55);box-shadow:0 14px 34px -22px rgba(40,0,20,.45),inset 0 1px 0 rgba(255,255,255,.5)}
-.navdark .nav .wrap{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28)}
+.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:7px;border-radius:999px;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);box-shadow:0 14px 34px -22px rgba(40,0,20,.45)}
+.navdark .nav .wrap{background:rgba(255,255,255,.08)}
 .nav .left{justify-self:start;display:flex}
 .nav .logo{justify-self:center}
 .nav a,.nav button{pointer-events:auto}
@@ -81,9 +86,9 @@ body.menu-open .pill .burger i:last-child{transform:translateY(-2.75px) rotate(-
 body.menu-open .nav .logo img{filter:invert(1)}
 @media (max-width:640px){.nav .book{display:none}.nav .logo img{height:38px}}
 /* sleek nav: a slim floating glass bar that tightens once you scroll */
-.nav .wrap{max-width:min(1120px,calc(100% - 32px));padding:5px 5px 5px 8px;gap:12px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.5);box-shadow:0 18px 40px -26px rgba(40,0,20,.5),inset 0 1px 0 rgba(255,255,255,.55);transition:max-width .6s var(--ease),background .4s,box-shadow .4s,padding .4s var(--ease)}
-body.nav-min .nav .wrap{max-width:min(860px,calc(100% - 32px));background:rgba(255,255,255,.62);box-shadow:0 20px 44px -24px rgba(40,0,20,.45),inset 0 1px 0 rgba(255,255,255,.8)}
-.navdark .nav .wrap,.navdark body.nav-min .nav .wrap{background:rgba(26,26,26,.5);border-color:rgba(255,255,255,.18);box-shadow:0 18px 40px -26px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12)}
+.nav .wrap{max-width:min(1120px,calc(100% - 32px));padding:5px 5px 5px 8px;gap:12px;background:rgba(255,255,255,.2);box-shadow:0 18px 40px -26px rgba(40,0,20,.5);transition:max-width .6s var(--ease),background .4s,box-shadow .4s,padding .4s var(--ease)}
+body.nav-min .nav .wrap{max-width:min(860px,calc(100% - 32px));background:rgba(255,255,255,.62);box-shadow:0 20px 44px -24px rgba(40,0,20,.45)}
+.navdark .nav .wrap,.navdark body.nav-min .nav .wrap{background:rgba(26,26,26,.5);box-shadow:0 18px 40px -26px rgba(0,0,0,.6)}
 .nav .logo img{height:38px;transition:height .4s var(--ease)}
 body.nav-min .nav .logo img{height:34px}
 .nav .links{display:flex;gap:2px}
@@ -2412,3 +2417,5 @@ else {
 }
 })();
 </script>
+
+</html>
