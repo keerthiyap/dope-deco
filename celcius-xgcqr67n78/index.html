@@ -88,7 +88,7 @@ h1 em{font-family:Fraunces,serif;font-style:italic;font-weight:300;color:var(--p
 .slide{flex:0 0 100%;scroll-snap-align:start;position:relative;margin:0;border-radius:20px;overflow:hidden;background:#d9cfc6;aspect-ratio:4/3}
 .slide img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease-out}
 .slide.on img{transform:scale(1.04)}
-.single .slide{aspect-ratio:16/9}
+#storefront .single .slide{aspect-ratio:16/9}
 .slide figcaption{position:absolute;left:14px;bottom:14px;right:14px;pointer-events:none}
 .slide figcaption span{display:inline-block;background:rgba(255,255,255,.92);color:var(--ink);font-size:13px;font-weight:500;padding:8px 14px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .ctl{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:16px;color:var(--berry)}
@@ -219,14 +219,10 @@ h1 em{font-family:Fraunces,serif;font-style:italic;font-weight:300;color:var(--p
    <p class="body rv" style="--d:.2s">In showrooms without one, we suspend the orbs inside the showroom and run a foliage garland with twinkle lights along a large display rack.</p>
    <div class="chips rv" style="--d:.3s"><span>Orbs across the ceiling</span><span>Garland on the display rack</span><span>Walkways kept clear</span></div>
   </div>
-  <div class="car rv" style="--d:.15s" data-auto="5600">
+  <div class="car single rv" style="--d:.15s">
    <div class="track">
     <figure class="slide"><img src="img/cel-mall.webp" alt="Celcius mall showroom with red and gold orbs across the ceiling" loading="lazy"><figcaption><span>Seen from the walkway</span></figcaption></figure>
-    <figure class="slide"><img src="img/cel-mall-bed.webp" alt="Orbs suspended over the display bed" loading="lazy"><figcaption><span>Over the display bed</span></figcaption></figure>
-    <figure class="slide"><img src="img/cel-mall-rack.webp" alt="Lit foliage garland in swags along the tall display rack" loading="lazy" style="object-position:50% 30%"><figcaption><span>Garland on the large display rack</span></figcaption></figure>
-    <figure class="slide"><img src="img/cel-mall-desk.webp" alt="Mini tree and velvet reindeer on the reception desk" loading="lazy"><figcaption><span>Mini tree and reindeer on the reception desk</span></figcaption></figure>
    </div>
-   <div class="ctl"><div class="dots"></div><div class="btns"><button class="prev" aria-label="Previous image">&#8592;</button><button class="next" aria-label="Next image">&#8594;</button></div></div>
   </div>
  </div>
 </section>
