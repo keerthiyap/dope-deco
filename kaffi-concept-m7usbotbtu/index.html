@@ -49,6 +49,16 @@ section.render .wrap{padding-block:clamp(36px,6vw,64px);display:grid;gap:20px}
 .disc-bar strong{font-weight:700}
 .rights{background:#FFF8B8;color:var(--soft);text-align:center;font-size:12px;line-height:1.5;padding:8px max(16px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
 @media (max-width:760px){.meta{grid-template-columns:repeat(2,minmax(0,1fr))}.top p{display:none}}
+.sw-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.sw-grid figure{background:#fff;border-radius:18px;padding:10px 10px 14px;display:grid;gap:10px;box-shadow:0 12px 28px rgba(60,20,30,.07)}
+.sw-grid img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block}
+.sw-grid figcaption{display:grid;gap:2px;padding:0 6px}
+.sw-grid figcaption span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--berry)}
+.sw-grid figcaption b{font-weight:500;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:14px 18px}
+.chips div{display:grid;justify-items:center;gap:6px;font-size:12px;color:var(--soft)}
+.chips i{width:46px;height:46px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+@media (max-width:760px){.sw-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
 </style>
 </head>
 <body>
@@ -66,6 +76,7 @@ section.render .wrap{padding-block:clamp(36px,6vw,64px);display:grid;gap:20px}
 <li><a href="#entrance"><b>01</b>Entrance doors</a></li>
 <li><a href="#lounge"><b>02</b>Lounge tree and window garland</a></li>
 <li><a href="#dining"><b>03</b>Dining windows and table centrepieces</a></li>
+<li><a href="#swatches"><b>04</b>Swatches</a></li>
 </ol>
 </div></section>
 
@@ -83,6 +94,17 @@ section.render .wrap{padding-block:clamp(36px,6vw,64px);display:grid;gap:20px}
 <div class="rhead"><span class="no">03</span><h2>Dining windows and table centrepieces</h2></div>
 <div class="frame"><img src="img/windows.webp" width="1800" height="1492" loading="lazy" alt="Dining area with cedar garlands framing two windows, hanging kraft paper stars, and moss candle wreaths with taper candles on the tables"></div>
 <p class="note">If moss is not available in the quantity needed, we will propose an alternative table arrangement.</p>
+</div></section>
+
+<section class="render" id="swatches"><div class="wrap">
+<div class="rhead"><span class="no">04</span><h2>Swatches</h2></div>
+<div class="sw-grid">
+<figure><img src="img/sw-bells.webp" width="600" height="600" loading="lazy" alt="Brushed gold bell"><figcaption><span>Bells</span><b>Brushed gold bells</b></figcaption></figure>
+<figure><img src="img/sw-baubles.webp" width="600" height="600" loading="lazy" alt="Blush, dusty blue and striped cream baubles on the tree"><figcaption><span>Ornaments</span><b>Matte and striped baubles</b></figcaption></figure>
+<figure><img src="img/sw-cherub.webp" width="600" height="600" loading="lazy" alt="Gold cherub ornament"><figcaption><span>Ornaments</span><b>Gold cherub ornaments</b></figcaption></figure>
+<figure><img src="img/sw-velvet.webp" width="600" height="600" loading="lazy" alt="Chocolate velvet ribbon tied in a bow on a cedar wreath"><figcaption><span>Fabric</span><b>Chocolate velvet ribbon</b></figcaption></figure>
+</div>
+<div class="chips"><div><i style="background:#3E5B34"></i>Cedar</div><div><i style="background:#4E2A1A"></i>Chocolate</div><div><i style="background:#9A5B2E"></i>Cognac</div><div><i style="background:#C8A27A"></i>Kraft</div><div><i style="background:#EBDFCB"></i>Cream</div><div><i style="background:#C9A3A6"></i>Blush</div><div><i style="background:#9AA7AC"></i>Dusty blue</div><div><i style="background:#B8964A"></i>Antique gold</div></div>
 </div></section>
 
 <p class="disc-bar"><b>Please note:</b> these renders show the <strong>proposed design concept.</strong> Finished designs may vary a little from the rendered images.</p>
